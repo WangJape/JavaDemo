@@ -1,0 +1,17 @@
+
+spring:
+  # 数据源配置
+  datasource:
+    core: #数据源1
+      driver-class-name: com.ibm.db2.jcc.DB2Driver
+      jdbc-url: jdbc:db2://10.100.32.212:60000/workflow
+      username: workflow
+      password: workflow
+    bedb: # 数据源2
+      driver-class-name: com.ibm.db2.jcc.DB2Driver
+      jdbc-url: jdbc:db2://10.100.32.113:60000/HDBMS:currentSchema=BE_DB;
+      username: db2inst1
+      password: Chdc@123
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

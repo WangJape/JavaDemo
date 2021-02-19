@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jape.multipleds.dao.ds1.BciAccmgnMapper">
+    <resultMap id="BaseResultMap" type="com.jape.multipleds.bean.BciAccmgn">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="BANKACCID" jdbcType="INTEGER" property="bankaccid"/>
+        <result column="BANKCODE" jdbcType="CHAR" property="bankcode"/>
+        <result column="CUSTID" jdbcType="VARCHAR" property="custid"/>
+        <result column="BANKACC" jdbcType="VARCHAR" property="bankacc"/>
+        <result column="ACCNAME" jdbcType="VARCHAR" property="accname"/>
+        <result column="INNERACC" jdbcType="VARCHAR" property="inneracc"/>
+        <result column="ACCTYPE" jdbcType="INTEGER" property="acctype"/>
+        <result column="CURRCODE" jdbcType="INTEGER" property="currcode"/>
+        <result column="BALANCE" jdbcType="DECIMAL" property="balance"/>
+        <result column="USABLEBAL" jdbcType="DECIMAL" property="usablebal"/>
+        <result column="AREACODE" jdbcType="INTEGER" property="areacode"/>
+        <result column="OPENBRC" jdbcType="VARCHAR" property="openbrc"/>
+        <result column="BRCNAME" jdbcType="VARCHAR" property="brcname"/>
+        <result column="OPENDATE" jdbcType="DATE" property="opendate"/>
+        <result column="PURPOSE" jdbcType="INTEGER" property="purpose"/>
+        <result column="RECSTATUS" jdbcType="INTEGER" property="recstatus"/>
+        <result column="MGNMODE" jdbcType="INTEGER" property="mgnmode"/>
+        <result column="MGNCYCLE" jdbcType="INTEGER" property="mgncycle"/>
+        <result column="HOLDLIMIT" jdbcType="DECIMAL" property="holdlimit"/>
+        <result column="QUERYAUTH" jdbcType="INTEGER" property="queryauth"/>
+        <result column="DAYTIMES" jdbcType="INTEGER" property="daytimes"/>
+        <result column="TMWINDOW" jdbcType="INTEGER" property="tmwindow"/>
+        <result column="LASTBIZDT" jdbcType="CHAR" property="lastbizdt"/>
+        <result column="LASTBIZTM" jdbcType="VARCHAR" property="lastbiztm"/>
+        <result column="MGNDATE" jdbcType="DATE" property="mgndate"/>
+    </resultMap>
+
+    <select id="queryAll" resultMap="BaseResultMap">
+        select * from BCI_ACCMGN
+    </select>
+
+</mapper>

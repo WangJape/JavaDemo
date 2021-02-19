@@ -1,0 +1,20 @@
+spring:
+# datasource:
+#    driver-class-name: oracle.jdbc.OracleDriver
+#    url: jdbc:oracle:thin:@192.168.1.12:1521:oracle
+#    username: c##WJP
+#    password: 123456
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.13:3306/jape
+    username: root
+    password: 123456
+
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  type-aliases-package: com.jape.esjobdemo.entity
+
+#自定义属性
+elasticJob:
+  namespace: SpringBootElasticJob
+  serverLists: 192.168.1.13:2181

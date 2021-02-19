@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jape.multipleds.dao.ds2.TblBeAccInfoCopyMapper">
+    <resultMap id="BaseResultMap" type="com.jape.multipleds.bean.TblBeAccInfoCopy">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="BANK_ACC_ID" jdbcType="VARCHAR" property="bankAccId"/>
+        <result column="BANK_CODE" jdbcType="VARCHAR" property="bankCode"/>
+        <result column="CUST_ID" jdbcType="VARCHAR" property="custId"/>
+        <result column="BANK_ACC" jdbcType="VARCHAR" property="bankAcc"/>
+        <result column="ACC_NAME" jdbcType="VARCHAR" property="accName"/>
+        <result column="INNER_ACC" jdbcType="VARCHAR" property="innerAcc"/>
+        <result column="ACC_TYPE" jdbcType="VARCHAR" property="accType"/>
+        <result column="CURR_CODE" jdbcType="VARCHAR" property="currCode"/>
+        <result column="BALANCE" jdbcType="DECIMAL" property="balance"/>
+        <result column="AVAILABLE_BALANCE" jdbcType="DECIMAL" property="availableBalance"/>
+        <result column="PROVINCE_CODE" jdbcType="VARCHAR" property="provinceCode"/>
+        <result column="CITY_CODE" jdbcType="VARCHAR" property="cityCode"/>
+        <result column="OPEN_BRANCH_NO" jdbcType="VARCHAR" property="openBranchNo"/>
+        <result column="OPEN_BRANCH_NAME" jdbcType="VARCHAR" property="openBranchName"/>
+        <result column="OPEN_BRANCH_DATE" jdbcType="DATE" property="openBranchDate"/>
+        <result column="ACC_PURPOSE" jdbcType="VARCHAR" property="accPurpose"/>
+        <result column="ACC_STATUS" jdbcType="VARCHAR" property="accStatus"/>
+        <result column="MGN_MODE" jdbcType="VARCHAR" property="mgnMode"/>
+        <result column="HOLD_LIMIT" jdbcType="DECIMAL" property="holdLimit"/>
+        <result column="LAST_BIZ_DT" jdbcType="DATE" property="lastBizDt"/>
+        <result column="LAST_BIZ_TM" jdbcType="TIME" property="lastBizTm"/>
+        <result column="CUST_NAME" jdbcType="VARCHAR" property="custName"/>
+    </resultMap>
+
+    <select id="queryAll" resultMap="BaseResultMap">
+        select * from TBL_BE_ACC_INFO_COPY
+    </select>
+
+
+</mapper>

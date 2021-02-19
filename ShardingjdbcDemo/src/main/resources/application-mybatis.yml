@@ -1,0 +1,57 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.7.3.168:3306/jape01
+    username: root
+    password: 123456
+
+mybatis:
+  mapper-locations:  classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#sharding:
+#  jdbc:
+#    config:
+#      props:
+#        sql.show: true
+#    datasource:
+#      names: ds0,ds1
+#      ds0:
+#        type: com.zaxxer.hikari.HikariDataSource
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        jdbcUrl: jdbc:mysql://10.7.3.168:3306/jape01
+#        username: root
+#        password: 123456
+#      ds1:
+#        type: com.zaxxer.hikari.HikariDataSource
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        jdbcUrl: jdbc:mysql://10.7.3.168:3306/jape02
+#        username: root
+#        password: 123456
+#      sharding:
+#        default-database-strategy:
+#          inline:
+#            sharding-column: id
+#            algorithm-expression: ds$->{id % 2}
+#        binding-tables: user
+#        tables:
+#          user:
+#            actual-data-nodes: ds$->{0..1}.user$->{0..1}
+#            database-strategy:
+#              inline: #行表达式
+#                sharding-column: id        #列名称，多个列以逗号分隔
+#                algorithm-expression: ds${id % 2}    #按模运算分配
+#            table-strategy:
+#              inline:
+#                sharding-column: id
+#                algorithm-expression: user$->{id}
+#            key-generator:
+#              column: id
+#              type: SNOWFLAKE
+
+
+

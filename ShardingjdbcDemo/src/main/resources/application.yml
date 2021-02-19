@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+mybatis:
+  mapper-locations:  classpath:mapper/*.xml
+  type-aliases-package: com.jape.shardingjdbcdemo.entity
+  configuration:
+    #开启下划线转驼峰，当resultTpye=map时，此配置无效
+    map-underscore-to-camel-case: true
+
+# 分库分表
+sharding:
+  jdbc:
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://10.7.3.168:3306/jape01
+        username: root
+        password: 123456
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://10.7.3.168:3306/jape02
+        username: root
+        password: 123456
+    config:
+      props:
+        sql.show: true
+      sharding:
+        tables:
+          t_user:  #t_user表
+            key-generator-column-name: id  #主键
+            actual-data-nodes: ds${0..1}.t_user${0..1}    #数据节点,均匀分布
+            database-strategy:   #分库策略
+              inline: #行表达式
+                sharding-column: city_id        #列名称，多个列以逗号分隔
+                algorithm-expression: ds${city_id % 2}    #按模运算分配
+            table-strategy:  #分表策略
+              inline: #行表达式
+                sharding-column: sex
+                algorithm-expression: t_user${sex % 2}  #按模运算分配

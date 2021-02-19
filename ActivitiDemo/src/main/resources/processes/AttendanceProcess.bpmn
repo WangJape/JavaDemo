@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://activiti.org/bpmn20" id="review-definitions">
+  <process id="AttendanceProcess" name="考勤计算流程" isExecutable="true">
+    <startEvent id="attendance_start" name="考勤开始" activiti:initiator="initiator"></startEvent>
+    <endEvent id="attendance_end" name="考勤结束"></endEvent>
+    <serviceTask id="attendance_system_calculate" name="系统计算" activiti:class="com.jape.activitidemo.activitiService.AttendanceService"></serviceTask>
+    <userTask id="attendance_commit" name="提交考勤" activiti:assignee="#{userId}"></userTask>
+    <sequenceFlow id="flow3" sourceRef="attendance_start" targetRef="attendance_commit"></sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="attendance_commit" targetRef="attendance_system_calculate"></sequenceFlow>
+    <sequenceFlow id="flow5" sourceRef="attendance_system_calculate" targetRef="attendance_result_sendemail"></sequenceFlow>
+    <serviceTask id="attendance_result_sendemail" name="发送邮件" activiti:type="mail">
+      <extensionElements>
+        <activiti:field name="to">
+          <activiti:string><![CDATA[2144267754@qq.com]]></activiti:string>
+        </activiti:field>
+        <activiti:field name="subject">
+          <activiti:string><![CDATA[测试Activiti工作流MailTask]]></activiti:string>
+        </activiti:field>
+        <activiti:field name="charset">
+          <activiti:string><![CDATA[UTF-8]]></activiti:string>
+        </activiti:field>
+        <activiti:field name="html">
+          <activiti:expression><![CDATA[测试Activiti工作流MailTask，动态传参【userId -> #{userId}】]]></activiti:expression>
+        </activiti:field>
+        <activiti:field name="from">
+          <activiti:string><![CDATA[1143828481@qq.com]]></activiti:string>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow6" sourceRef="attendance_result_sendemail" targetRef="attendance_end"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_AttendanceProcess">
+    <bpmndi:BPMNPlane bpmnElement="AttendanceProcess" id="BPMNPlane_AttendanceProcess">
+      <bpmndi:BPMNShape bpmnElement="attendance_start" id="BPMNShape_attendance_start">
+        <omgdc:Bounds height="35.0" width="35.0" x="60.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="attendance_end" id="BPMNShape_attendance_end">
+        <omgdc:Bounds height="35.0" width="35.0" x="570.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="attendance_system_calculate" id="BPMNShape_attendance_system_calculate">
+        <omgdc:Bounds height="55.0" width="105.0" x="290.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="attendance_commit" id="BPMNShape_attendance_commit">
+        <omgdc:Bounds height="55.0" width="105.0" x="140.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="attendance_result_sendemail" id="BPMNShape_attendance_result_sendemail">
+        <omgdc:Bounds height="55.0" width="105.0" x="430.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="95.0" y="147.0"></omgdi:waypoint>
+        <omgdi:waypoint x="140.0" y="147.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="245.0" y="147.0"></omgdi:waypoint>
+        <omgdi:waypoint x="290.0" y="147.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="395.0" y="147.0"></omgdi:waypoint>
+        <omgdi:waypoint x="430.0" y="147.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="535.0" y="147.0"></omgdi:waypoint>
+        <omgdi:waypoint x="570.0" y="147.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
