@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jape.ssmdemo.dao.UserMapper">
+    <!--根据id查询得到一个user对象-->
+    <select id="getById" parameterType="int" resultType="com.jape.ssmdemo.entity.User">
+        select *
+        from t_user1
+        where id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.jape.ssmdemo.entity.User"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into t_user1 (id, name, sex, qq, birthday)
+        values (#{id}, #{name}, #{sex}, #{qq}, #{birthday})
+    </insert>
+
+</mapper>
