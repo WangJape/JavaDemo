@@ -8,6 +8,7 @@ import About from '../About/About';
 import RefDemo from '../About/RefDemo';
 import AntTest1 from '../Ant/AntTest1';
 import FormTest from '../Ant/FormTest';
+import Test from '../Test/Test';
 
 const { Header, Content, Footer } = Layout;
 
@@ -30,7 +31,10 @@ export default function App() {
                         <NavLink to="/index/about">关于</NavLink>
                     </Menu.Item>
                     <Menu.Item key="/index/ref">
-                        <NavLink to="/index/ref">关于</NavLink>
+                        <NavLink to="/index/ref">引用</NavLink>
+                    </Menu.Item>
+                    <Menu.Item key="/index/test">
+                        <NavLink to="/index/test">测试</NavLink>
                     </Menu.Item>
                 </Menu>
             </Header>
@@ -48,6 +52,7 @@ export default function App() {
                         <Route path="/index/clock" component={Clock} />
                         <Route path="/index/about" component={About} />
                         <Route path="/index/ref" component={RefDemo} />
+                        <Route path="/index/test" component={Test} />
                     </Switch>
                 </div>
             </Content>

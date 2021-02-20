@@ -43,7 +43,9 @@ public class Netty3Server {
         @Override
         public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception {
             System.out.println(e.getMessage());
-            e.getChannel().write("响应");
+            String rspMsg = "响应";
+            e.getChannel().write(rspMsg);
+            System.out.println("响应:" + rspMsg);
         }
 
         @Override
