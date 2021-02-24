@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { BrowserRouter, Link, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Switch, Redirect, NavLink } from 'react-router-dom'
 import Index from './App/Index';
 import Login from './App/Login';
 
@@ -16,13 +16,10 @@ export default function App() {
         <Switch>
           <Route path='/index' component={Index} />
           <Route path='/login' component={Login} />
-          <Route path='/' render={() => <a href="/index">主页</a>} />
-          <Route render={() => <div>Not Found</div>} />
+          <Route path='/render' render={() => <a href="/index">主页</a>} />
+          <Redirect to="/index" />
         </Switch>
       </BrowserRouter>
     </div>
   );
 }
-
-
-

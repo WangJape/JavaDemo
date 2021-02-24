@@ -27,6 +27,11 @@ export default class Clock extends React.Component {
         console.log(this)
     }
 
+    // 强制更新
+    force = () => {
+        this.forceUpdate();
+    }
+
     render() {
         return (
             <p onClick={this.handleClick}>{this.state.date.toLocaleTimeString()}</p>
