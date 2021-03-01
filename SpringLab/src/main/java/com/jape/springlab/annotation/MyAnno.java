@@ -14,12 +14,12 @@ import java.lang.annotation.Target;
  * @Inherited 所标注的Annotation将具有继承性。
  * @Repeatable 可重复的, 可以同时作用一个对象多次，但是每次作用注解又可以代表不同的含义
  */
-@Target(ElementType.TYPE)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MyAnno {
 
-    String name() default "anonymous";
+    //String name() default "anonymous";
 
-    String[] girlFriends();
+    //String[] girlFriends();
 
 }

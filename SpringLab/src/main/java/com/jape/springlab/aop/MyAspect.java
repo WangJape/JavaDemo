@@ -1,6 +1,7 @@
 package com.jape.springlab.aop;
 
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +28,11 @@ public class MyAspect {
      */
     @Pointcut("@annotation(com.jape.springlab.annotation.MyAnno)")
     private void cutMethod() {
+    }
+
+    @Before("cutMethod()")
+    public void before(){
+        System.err.println("before");
     }
 
 }

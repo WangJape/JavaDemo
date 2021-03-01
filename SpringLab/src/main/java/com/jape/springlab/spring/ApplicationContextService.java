@@ -20,15 +20,6 @@ public class ApplicationContextService {
     @Resource
     private ApplicationContext applicationContext;
 
-    public <T> T getBean(Class<T> clazz) {
-        T bean = applicationContext.getBean(clazz);
-        return bean;
-    }
-
-    public ApplicationContext getApplicationContext(){
-        return this.applicationContext;
-    }
-
     /**
      * 获取Spring上下文（方法3-通过WebApplicationContextUtils获取）
      */
@@ -36,6 +27,15 @@ public class ApplicationContextService {
         WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(sc);
         WebApplicationContext requiredWebApplicationContext = WebApplicationContextUtils.getRequiredWebApplicationContext(sc);
         return webApplicationContext;
+    }
+
+    public ApplicationContext getApplicationContext(){
+        return this.applicationContext;
+    }
+
+    public <T> T getBean(Class<T> clazz) {
+        T bean = applicationContext.getBean(clazz);
+        return bean;
     }
 
 }

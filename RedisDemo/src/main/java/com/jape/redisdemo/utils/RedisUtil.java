@@ -143,6 +143,31 @@ public class RedisUtil {
         return redisTemplate.opsForValue().increment(key, delta);
     }
 
+    /**
+     * 位图放入操作，不放默认是false
+     *
+     * @param key    键
+     * @param offset 偏移量
+     * @param value  布尔值
+     * @return 失败为null
+     */
+    public boolean setBit(String key, int offset, boolean value) {
+        Boolean bit = redisTemplate.opsForValue().setBit(key, offset, value);
+        return bit;
+    }
+
+    /**
+     * 获取位图key的特定位置比特位
+     *
+     * @param key    键
+     * @param offset 偏移量
+     * @return value
+     */
+    public boolean getBit(String key, int offset) {
+        Boolean bit = redisTemplate.opsForValue().getBit(key, offset);
+        return bit;
+    }
+
 
 //============================Hash数据类型操作=============================
 
