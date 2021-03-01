@@ -1,0 +1,31 @@
+server:
+  port: 80
+spring:
+  application:
+    name: spring-cloud-zuul
+
+#zuul:
+#  routes:
+#    api-producer:
+#      path: /baidu/**
+#      url: https://www.baidu.com/
+
+#zuul:
+#  routes:
+#    api-a: #随便定义，当不存在serviceId时，默认该值为serviceId（就是注册服务的名称，属性spring.application.name）
+#      path: /api-a/**
+#      serviceId: spring-cloud-eureka-client
+
+#开启动态网关服务发现,自动发现eureka上的服务，并用serviceId（就是注册服务的名称，属性spring.application.name）调用
+ribbon:
+  eureka:
+    enabled: true
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    #register-with-eureka: true #自注册，默认true
+    #fetch-registry: true #同步Eureka Server节点，默认true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

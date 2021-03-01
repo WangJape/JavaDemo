@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.wjp</groupId>
+    <artifactId>DubboDemo-Parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>hello_dubbo_service_api</module>
+        <module>hello-dubbo-service-wjpdemo-provider</module>
+        <module>hello-dubbo-service-wjpdemo-consumer</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <revision>2.7.5</revision>
+        <dubbo.version>${revision}</dubbo.version>
+        <nacos.version>1.1.4</nacos.version>
+        <dubbo.registry.nacos>2.6.7</dubbo.registry.nacos>
+        <dubbo.kryo.version>2.7.2</dubbo.kryo.version>
+        <hystrix.version>2.2.0.RELEASE</hystrix.version>
+    </properties>
+
+
+    <dependencies>
+
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <!--dubbo引入kryo高速序列化-->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-serialization-kryo</artifactId>
+                <version>${dubbo.kryo.version}</version>
+            </dependency>
+
+            <!-- Dubbo Nacos registry dependency-->
+            <!-- 注意：org.apache.dubbo中dubbo-spring-boot-starter自带此依赖，再引入会导致重复注册-->
+            <!--<dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo-registry-nacos</artifactId>
+                <version>${dubbo.registry.nacos}</version>
+            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
+            <!-- dubbo zookeeper dependency -->
+            <!--<dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-zookeeper</artifactId>
+                <version>${dubbo.version}</version>
+                <type>pom</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>-->
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                <version>${hystrix.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+                <version>${hystrix.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>2.0.6.RELEASE</version>
+            </dependency>
+
+            <!--此包为自己创建的api接口包，在接口项目中手动打包安装到本地-->
+            <dependency>
+                <groupId>com.wjp</groupId>
+                <artifactId>hello_dubbo_service_api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    
+</project>

@@ -1,0 +1,21 @@
+server:
+  port: 80
+spring:
+  application:
+    name: hello-dubbo-service-wjp-consumer
+dubbo:
+  application:
+    name: hello-dubbo-service-wjp-consumer
+  scan:
+    base-packages: com.wjp.hellodubboservicewjpdemoconsumer.controller
+  protocol:
+    name: dubbo
+    port: 20880
+    serialization: kryo
+    id: dubbo
+
+  #registry:
+    #address: zookeeper://127.0.0.1:2181
+    #id: zookeeper
+  registry:
+    address: nacos://127.0.0.1:8848

@@ -1,0 +1,26 @@
+server:
+  port: 8082 #启动多实例需更改此项
+spring:
+  application:
+    name: hello-dubbo-service-wjp-provider
+dubbo:
+  application:
+    name: hello-dubbo-service-wjp-provider
+  scan:
+    base-packages: com.wjp.hellodubboservicewjpdemoprovider.api.impl
+  protocol:
+    name: dubbo
+    #host: 127.0.0.1 #没啥用
+    port: 20882 #启动多实例需更改此项
+    serialization: kryo
+    id: dubbo   #没啥用
+    status: server
+
+  #registry: #使用Zookeeper注册中心
+    #address: zookeeper://127.0.0.1:2181
+    #id: zookeeper
+  registry: #使用nacos注册中心
+    address: nacos://127.0.0.1:8848
+  provider:
+    loadbalance: roundrobin #轮询
+

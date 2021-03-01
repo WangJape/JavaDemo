@@ -1,0 +1,24 @@
+server:
+  port: 3355
+spring:
+  application:
+    name: spring-cloud-config-client
+  cloud:
+    config:
+      label: master
+      name: spring-cloud-config-client
+      profile: dev
+      uri: http://localhost:3344
+
+management: #暴露actuator监控端点
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# 实现配置自动刷新功能(手动刷新)
+# 1、需要引入spring-boot-starter-actuator依赖，
+# 2、在yml中暴露监控端点
+# 3、在一个controller中引入@RefreshScope配置注解
+# 4、在配置文件改变时，需要手动 [Post] 访问 [http://localhost:3355/actuator/refresh],配置会自动更新
+#    命令[curl -X POST "http://localhost:3355/actuator/refresh"]

@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: springcloud-alibaba-sentinel
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #nacos作为注册中心
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719 #默认8719，若占用，则会自动递增，直到找到未被占用的端口
+      #eager: true #取消控制台懒加载（没用）
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848 #nacos作为sentinel定义的流控配置持久化中心
+            dataId: springcloud-alibaba-sentinel
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow

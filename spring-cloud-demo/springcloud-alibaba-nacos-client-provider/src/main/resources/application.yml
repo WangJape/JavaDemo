@@ -1,0 +1,9 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: springcloud-alibaba-nacos-client-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

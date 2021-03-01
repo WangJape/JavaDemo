@@ -1,0 +1,16 @@
+server:
+  port: 3377
+spring:
+  application:
+    name: springcloud-alibaba-nacos-config
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #nacos作为注册中心
+      config:
+        server-addr: localhost:8848 #nacos作为配置中心
+        file-extension: yaml
+        #group: DEFAULT_GROUP
+        #namespace: 32c47d12-a68a-4ddb-b557-43960bbfc656
+  profiles:
+    active: dev #开发环境

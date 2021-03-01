@@ -1,0 +1,44 @@
+server:
+  port: 8080
+spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/quartz?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Hongkong
+#    username: root
+#    password: 123456
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: etlCleanScheduler
+            instanceId: AUTO
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 100
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: QRTZ_  #Quartz表前缀
+            isClustered: true
+            clusterCheckinInterval: 10000 #检查数据库任务间隔(ms)
+            useProperties: false
+            dataSource: wjpDS
+          dataSource:
+            wjpDS:
+              provider: hikaricp #quartz默认使用c3p0数据源
+              driver: com.mysql.cj.jdbc.Driver
+              URL: jdbc:mysql://127.0.0.1:3306/quartz?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Hongkong
+              username: root
+              password: 123456
+              maxConnections: 10
+              validationQuery: select 0 from dual
+  mail:
+    host: smtp.qq.com
+    username: #邮箱号
+    password: #授权码

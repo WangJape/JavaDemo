@@ -1,0 +1,19 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: spring-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/WangJape/springcloud-config-yml.git
+          search-paths: #本地目录
+            - springcloud-config-yml
+      label: master #分支
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+# 在config-server中访问文件举例 [http://localhost:3344/master/application-dev.yml]
