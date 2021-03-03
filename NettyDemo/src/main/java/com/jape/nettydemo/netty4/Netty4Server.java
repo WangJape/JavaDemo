@@ -57,7 +57,8 @@ public class Netty4Server {
                 });
 
         // 4 进行绑定 开始接收进来的连接
-        ChannelFuture cf1 = bootstrap.bind(8569).sync();
+        ChannelFuture cf1 = bootstrap.bind(8080).sync();
+        System.out.println("服务启动");
         // 5 等待服务器socket 关闭 ，在这个例子中，这不会发生，但你可以优雅地关闭你的服务器。
         cf1.channel().closeFuture().sync();
         bossGroup.shutdownGracefully();
