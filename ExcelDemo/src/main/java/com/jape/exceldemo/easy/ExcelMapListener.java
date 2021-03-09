@@ -5,7 +5,7 @@ import com.alibaba.excel.event.AnalysisEventListener;
 
 import java.util.Map;
 
-public class ExcelDataListener extends AnalysisEventListener<Map<Object, Object>> {
+public class ExcelMapListener extends AnalysisEventListener<Map<Object, Object>> {
 
     /**
      * 这个每一条数据解析都会来调用
