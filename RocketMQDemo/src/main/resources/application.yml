@@ -1,0 +1,5 @@
+rocketmq:
+  name-server: http://127.0.0.1:9876 #rocketmq服务地址
+  producer:
+    group: rocketmq_test #自定义的组名称
+    send-message-timeout: 3000  #消息发送超时时长
