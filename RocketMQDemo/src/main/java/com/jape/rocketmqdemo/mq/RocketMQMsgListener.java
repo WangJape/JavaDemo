@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@RocketMQMessageListener(topic = "queue_test_topic", selectorExpression = "*", consumerGroup = "queue_group_test")
+@RocketMQMessageListener(topic = "TestTopic", selectorExpression = "*", consumerGroup = "queue_group_test")
 public class RocketMQMsgListener implements RocketMQListener<MessageExt> {
 
     @Autowired
