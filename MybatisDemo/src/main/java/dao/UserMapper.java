@@ -10,4 +10,7 @@ public interface UserMapper {
 
     List<User> getList();
 
+    int insertOne(User user);
+
+    int batchInsert(List<User> list);
 }
