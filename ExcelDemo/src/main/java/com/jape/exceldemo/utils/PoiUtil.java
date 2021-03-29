@@ -7,6 +7,7 @@ import org.apache.poi.ss.usermodel.*;
 
 import java.io.*;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -90,7 +91,7 @@ public class PoiUtil {
                     DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                     cellValue = format.format(date);
                 } else {
-                    cellValue = String.valueOf(cell.getNumericCellValue());
+                    cellValue = new DecimalFormat("#.##").format(cell.getNumericCellValue());
                 }
                 break;
             case STRING: // 字符串

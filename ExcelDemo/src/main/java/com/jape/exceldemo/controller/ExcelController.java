@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -27,11 +28,14 @@ public class ExcelController {
     @PostMapping("/importUser")
     public String importUser(MultipartFile file) throws IOException {
         String fileName = file.getOriginalFilename();
+        File saveFile = new File(fileName);
+        file.transferTo(saveFile);
         System.err.printf("接收到文件：%s%n", fileName);
-        EasyExcel.read(file.getInputStream())
+
+        EasyExcel.read(saveFile)
                 .head(EasyUser.class)
                 .registerReadListener(new AnalysisEventListener<EasyUser>() {
-                    
+
                     @Override
                     public void invoke(EasyUser data, AnalysisContext context) {
                         //入库
