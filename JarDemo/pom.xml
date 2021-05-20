@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jape</groupId>
+    <artifactId>JarDemo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>2.2.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.18</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <!--使用maven-jar-plugin打可执行jar，打出的包不带第三方jar，三方jar需要放在与jar同级的lib目录-->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                &lt;!&ndash; 对要打的jar包进行配置 &ndash;&gt;
+                <configuration>
+                    <archive>
+                        &lt;!&ndash;生成的jar中，不要包含pom.xml和pom.properties这两个文件&ndash;&gt;
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                        <manifest>
+                            &lt;!&ndash;是否要把第三方jar放到manifest的classpath中&ndash;&gt;
+                            <addClasspath>true</addClasspath>
+                            &lt;!&ndash;生成的manifest中classpath的前缀，因为要把第三方jar放到lib目录下，所以classpath的前缀是lib/&ndash;&gt;
+                            <classpathPrefix>lib/</classpathPrefix>
+                            &lt;!&ndash;应用的main class&ndash;&gt;
+                            <mainClass>com.jape.Launcher</mainClass>
+                        </manifest>
+                    </archive>
+                    &lt;!&ndash;过滤掉不希望包含在jar中的文件&ndash;&gt;
+                    <excludes>
+                        &lt;!&ndash; 排除不需要的文件夹(路径是jar包内部的路径) &ndash;&gt;
+                        <exclude>${project.basedir}/xml/*</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>-->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.0.0</version>
+                <!-- 对项目的组装进行配置 -->
+                <configuration>
+                    <!-- 使用Maven预配置的描述符 -->
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <!-- 也可以配置描述符文件,自定义打包 -->
+                    <!--<descriptors>
+                        <descriptor>src/main/resources/assembly.xml</descriptor>
+                    </descriptors>-->
+                    <!--project 入口-->
+                    <archive>
+                        <manifest>
+                            <mainClass>com.jape.Launcher</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <!-- 将组装绑定到maven生命周期的哪一阶段 -->
+                        <phase>package</phase>
+                        <goals>
+                            <!-- 指定assembly插件的打包方式 只运行一次-->
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+
+    </build>
+</project>
