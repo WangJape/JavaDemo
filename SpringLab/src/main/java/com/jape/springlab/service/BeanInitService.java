@@ -8,6 +8,9 @@ import javax.annotation.PostConstruct;
 
 /**
  * Bean初始化Demo
+ * 1、 @PostConstruct
+ * 2、InitializingBean.afterPropertiesSet()
+ * 3、init-method
  *
  * @author Jape
  * @since 2021/4/19 13:48
