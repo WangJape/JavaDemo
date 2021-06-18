@@ -2,6 +2,7 @@ package com.jape.demo;
 
 import com.jape.entity.User;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 
@@ -34,5 +35,12 @@ public class OptionalDemo {
                 .map(User::getLeader)
                 .orElse("我是你爸爸");
         System.err.println(leader);
+
+        ArrayList<Object> objects = new ArrayList<>();
+        Object o1 = Optional.of(objects)
+                .filter(list -> list.size() > 0)
+                .map(list -> list.get(0))
+                .orElse(new Object());
+        System.err.println(o1);
     }
 }

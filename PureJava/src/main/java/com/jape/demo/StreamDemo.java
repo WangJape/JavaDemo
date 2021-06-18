@@ -93,7 +93,7 @@ public class StreamDemo {
         list.add(e);
 
         Map<String, User> map = list.stream().map(o -> (User) o)
-                .collect(Collectors.toMap(User::getUserName, Function.identity(), (key1, key2) -> key1));
+                .collect(Collectors.toMap(User::getUserName, Function.identity(), (value1, value2) -> value1));
 
         System.out.println();
     }

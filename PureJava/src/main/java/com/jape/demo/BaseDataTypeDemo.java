@@ -24,6 +24,14 @@ public class BaseDataTypeDemo {
         System.err.println(a3);
         System.err.println(a4);
 
+        int shiftI = -2;
+        float shiftF = 45.0f;
+        long shiftL = 45;
+        char shiftC = 'u';
+        System.out.println(Integer.toBinaryString(shiftI));
+        System.out.println(shiftI = shiftI>>>3);
+        System.out.println(Integer.toBinaryString(shiftI));
+
 
 
     }

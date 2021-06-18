@@ -14,12 +14,17 @@ public class CglibProxyDemo {
 
         Teacher teacher = (Teacher) enhancer.create();
         teacher.leaveHomework();
+        teacher.teach();
     }
 }
 
 class Teacher {
     public void leaveHomework() {
         System.out.println("老师留作业");
+    }
+
+    public void teach(){
+        System.out.println("老师上课");
     }
 }
 
