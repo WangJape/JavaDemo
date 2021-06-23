@@ -23,5 +23,11 @@ public class StringDemo {
         message = String.format(template, varargs);
         System.err.println(message);
 
+        //正则
+        String girl = "girl24";
+        System.err.println(girl.matches("^girl(1[8-9]|2[0-4])$"));
+
+
+
     }
 }
