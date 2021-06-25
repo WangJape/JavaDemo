@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jape</groupId>
-    <artifactId>spring-web-lab</artifactId>
+    <artifactId>SpringWebLab</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-web-lab</name>
+    <name>SpringWebLab</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -22,6 +22,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--thymeleaf模板引擎,springBoot 必须要使用模板引擎，才能返回页面-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!--websocket依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
         <dependency>

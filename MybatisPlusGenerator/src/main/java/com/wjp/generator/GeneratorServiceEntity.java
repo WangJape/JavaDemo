@@ -41,7 +41,8 @@ public class GeneratorServiceEntity {
                 .setEntityLombokModel(true)
                 .setNaming(NamingStrategy.underline_to_camel)//下划线转成驼峰式命名
                 .setRestControllerStyle(false)//@RestController
-                .setInclude(tablesNamee);
+                .setInclude(tablesNamee)
+                .setTablePrefix("sys_");//去掉表前缀
         config.setActiveRecord(false)
                 .setAuthor("赵伟")//修改注释上的@Author
                 .setOutputDir(OutputDir)
